@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noisy_Places</title>
+    <link rel="icon" href="./css/img/bi.jpg">
+    <style>
+        body{
+    
+    text-align: center;
+    background-image: url('./css/img/bi.jpg');
+    background-repeat:inherit;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+
+h1{
+    font-family:monospace;
+    font-size: 50px;
+    color: aliceblue;
+}
+
+
+#Noise{
+    color: aliceblue;
+    font-size: 30px;
+    margin-top: 100px;
+}
+
+#NoiseTitle{
+    font-weight: bold;
+}
+
+#NoiseTitle,#value{
+    font-size: 40px;
+    color: aliceblue;
+}
+
+#value{
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+#warning{
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 2em;
+} 
+a{
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     color: #000;
+     text-decoration: none;
+     background-color: aliceblue;
+     padding: 5px 10px;
+     border-radius: 7px;
+     width: 20%;
+     display: inline-block;
+    margin: 80 auto;
+    margin-top: 100px;
+    transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+a:hover{
+    transform: scale(1.05);
+    box-shadow: #000 3px 3px;
+}
+button{
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 7px;
+    border: none;
+    padding: 7px 0px;
+    text-align: center;
+    margin-top: 90px;
+   height: 100%;
+   width: 20%;
+   
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>Noise Pollution Monitoring system</h1><hr>
+    <div id="Noise">
+        <p id="NoiseTitle" style="display: inline;">Noise Level:</p>
+        <p id="value" style="display: inline;"> <%= value %> </p><br>
+        <p id="warning"></p>
+    </div>
+    <a href="/">Stop Monitoring</a>
+    
+    <script>
+        const label2=document.querySelector('#value');
+        const label3=document.querySelector('#warning');
+        let data;
+        setInterval(()=>{  
+        data =label2.textContent ;
+        data=parseFloat(data);
+        console.log(data);
+        if (data <= 65.00) {
+        label2.style.color = '#32ff77';
+        label3.innerText = "Good Range";
+        label3.style.color = '#32ff77';
+        } else if (data >= 90.00) {
+        label2.style.color = '#ff0000';
+        label3.innerText = "High Noise Pollution";
+        label3.style.color = '#ff0000';
+        } else if (data > 65.00 && data < 90.00) {
+        label2.style.color = '#ffc062';
+        label3.innerText = "Average Range";
+        label3.style.color = '#ffc062';
+     }},100)
+    setTimeout('location.reload(true)',5000)
+    </script>
+</body>
+</html>
